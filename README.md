@@ -13,7 +13,7 @@
 
 - Created the Command and handlers to be called by the controller to add/delete and get sales.
 
-- implemented the business rules described in the test inside the Sales command handler
+- implemented the business rules as described inside the Sales command handler
 
 - Put a Log for the controller methods to simulate an event sending for a message broker(rabbitmq , azure service bus, kafka)
 
