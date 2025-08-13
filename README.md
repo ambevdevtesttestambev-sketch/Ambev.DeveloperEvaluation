@@ -1,19 +1,27 @@
 # Developer Evaluation Project
 
 ## What was made: 
-1 - Created Migrations for Sales table and Salesitem table
-2 - Created the Controller for Sales based on the Users controller structure using imediatr for the data retrieval/add
-3 - Created a Sales Repository Interface and injected into program init
-4 - Create a Sales Repository class with data operations.
-5 - Created entities in the domain and also created the configuration files for the ORM.
-6 - Created the Command and handlers to be called by the controller to add/delet and get sales.
-7 - implemented the business rules described in the test inside the Sales command handler
-8 - Put a Log for the controller methods to simulate an event sending for a message broker(rabbitmq , azure service bus, kafka)
-9 - Implemented unit tests for the entity.
+- Created Migrations for Sales table and Salesitem table
+
+- Created the Controller for Sales based on the Users controller structure using imediatr for the data retrieval/add
+
+- Created a Sales Repository Interface and injected into program init
+
+- Create a Sales Repository class with data operations.
+
+- Created entities in the domain and also created the configuration files for the ORM.
+
+- Created the Command and handlers to be called by the controller to add/delete and get sales.
+
+- implemented the business rules described in the test inside the Sales command handler
+
+- Put a Log for the controller methods to simulate an event sending for a message broker(rabbitmq , azure service bus, kafka)
+
+- Implemented unit tests for the entity.
 
 Missing :
 
-1 - Unit tests for the handlers and the controllers    
+- Unit tests for the handlers and the controllers    
 
 
 
