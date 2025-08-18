@@ -1,6 +1,7 @@
 # Developer Evaluation Project
 
 ## What was made: 
+
 - Created Migrations for Sales table and Salesitem table
 
 - Created the Controller for Sales based on the Users controller structure using imediatr for the data retrieval/add
@@ -15,14 +16,9 @@
 
 - implemented the business rules as described inside the Sales command handler
 
-- Put a Log for the controller methods to simulate an event sending for a message broker(rabbitmq , azure service bus, kafka)
+- Created events and put a Log for the controller methods to simulate publishing an event into a message broker queue(rabbitmq , azure service bus, kafka)
 
-- Implemented unit tests for the entity.
-
-Missing :
-
-- Unit tests for the handlers and the controllers    
-
+- Unit tests for the handlers 
 
 
 

@@ -1,6 +1,7 @@
 using Ambev.DeveloperEvaluation.Application.Sales.CreateSale;
 using Ambev.DeveloperEvaluation.Application.Sales.DeleteSale;
 using Ambev.DeveloperEvaluation.Application.Sales.GetSaleById;
+using Ambev.DeveloperEvaluation.Domain.Events;
 using Ambev.DeveloperEvaluation.WebApi.Common;
 using AutoMapper;
 using MediatR;
@@ -27,7 +28,8 @@ public class SalesController : BaseController
     public async Task<IActionResult> Create([FromBody] CreateSaleCommand command)
     {
         var result = await _mediator.Send(command);
-        _logger.LogInformation("Event: SaleCreated | SaleId: {SaleId}", result.Id);
+        var saleCreatedEvent = new SaleCreatedEvent(result.Id);
+        _logger.LogInformation("Event: SaleCreated | SaleId: {SaleId} | EventTime: {EventTime}", saleCreatedEvent.SaleId, saleCreatedEvent.CreatedAt);
         return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
     }
         
@@ -37,15 +39,16 @@ public class SalesController : BaseController
     {
         var command = new DeleteSaleCommand { Id = id };
         await _mediator.Send(command);
-        _logger.LogInformation("Event: SaleCancelled | SaleId: {SaleId}", id);
+        var saleCancelledEvent = new SaleCancelledEvent(id);
+        _logger.LogInformation("Event: SaleCancelled | SaleId: {SaleId} | EventTime: {EventTime}", saleCancelledEvent.SaleId, saleCancelledEvent.CancelledAt);
         return NoContent();
-    }
-    
+    }    
+
     [HttpPost("{saleId}/items/{itemId}/cancel")]
     public IActionResult CancelItem(Guid saleId, Guid itemId)
     {
-        //not implemented in the application layer as per the requirements
-        _logger.LogInformation("Event: ItemCancelled | SaleId: {SaleId} | ItemId: {ItemId}", saleId, itemId);
+        var itemCancelledEvent = new ItemCancelledEvent(saleId, itemId);
+        _logger.LogInformation("Event: ItemCancelled | SaleId: {SaleId} | ItemId: {ItemId} | EventTime: {EventTime}", itemCancelledEvent.SaleId, itemCancelledEvent.ItemId, itemCancelledEvent.CancelledAt);
         return NoContent();
     }
 
